@@ -8,16 +8,13 @@
   },
   "test": {
     "username": "root",
-    "password": "",
+    "password": null,
     "database": "database_test",
-    "host": "localhost",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "",
-    "database": "database_production",
-    "host": "localhost",
+    "use_env_variable":"JAWSDB_URL",
     "dialect": "mysql"
   }
 }

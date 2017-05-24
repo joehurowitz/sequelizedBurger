@@ -1,56 +1,56 @@
-<h1>Burgers!</h1>
-<img src="/../assets/img/burger.png">
 
+
+<div class="container" id="masthead">
+  <div class="row" id=burgerimage>
+    <img class="center-block"src="/../assets/img/burger.png" style="max-height: 200px; width: 200px">
+  </div>
+  <div class="col-xs-12 text-center" id="appTitle">
+    <h2>Burgers!</h2>
+  </div>
+</div>
 
 <div class="container">
-<div class="row">
-<div class="col-lg-6">
+  <div class="col-xs-6 text-center" class="task">
+    <div class="row">
+      {{#each Burger}}
+        {{#unless this.devoured}}
+      <div class="col-xs-9 text-center">
+          <pre>{{this.id}}. {{this.burger_name}}</pre>
+      </div>
 
-<h2>We're Hungry!</h2>
-<ul>
-  {{#each Burger}}
-    {{#unless this.devoured}}
-      <li>
-       {{this.id}} : {{this.burger_name}}  
-        <form action="/{{this.id}}?_method=PUT" method="POST">
-          <input type="hidden" name="devoured" value="true">
-          <button type="submit">DEVOUR IT!</button>
-          </form>
-        </li>
-      {{/unless}}
-    {{/each}}
-  </ul>
-</div>
-
-
-<div class="col-lg-6">
-<h2>They were Tasty!</h2>
-<ul>
-  {{#each Burger}}
-    {{#if this.devoured}}
-      <li>
-        {{this.burger_name}}
-        
-          </li>
-        {{/if}}
+    <div class="col-xs-3 text-center">
+      <form action="/{{this.burger_name}}?_method=PUT" method="POST">
+        <input type="hidden" name="devoured" value="true">
+        <button type="submit"class="btn btn-default">Devour It!</button>
+      </form>
+    </div>
+        {{/unless}}
       {{/each}}
-    </ul>
+    </div>
+  </div>
+
+  <div class="col-xs-6 text-center" class="task">
+    {{#each Burger}}
+      {{#if this.devoured}}
+        <pre>{{this.id}}. {{this.burger_name}}</pre>
+        <form action="/{{this.burger_name}}?_method=PUT" method="POST">
+          <input type="hidden" name="devoured" value="false">
+        </form>
+      {{/if}}
+    {{/each}}
   </div>
 </div>
+<br>
 
-<h2>Add a Burger</h2>
-<form class="create-update-form" action="/" method="POST">
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 text-center enter_section">
+    <form action="/" method="POST">
+      <input type="textarea" name="name" id="burgerType">
+      <button type="submit" class="btn btn-primary">Submit</button>     
+    </form>
+    <br>
+    <p>Pick the burger you want to eat then click the "Submit" button</p>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="slee">Hungry?</label><br>
-    <input type="radio" name="devoured" value="1" > Hungry!<br>
-    <input type="radio" name="devoured" value="0" checked> I'll Eat it Later!
-  </div>
-  <button type="submit">Add Burger</button>
-</form>
-
-
 </div>
